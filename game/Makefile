@@ -5,7 +5,7 @@ CC=g++
 all: game
 
 game: game.o module.o
-	$(CC) -o game game.o module.o
+	$(CC) -o game game.o module.o -lSDL2
 
 game.o: game.cpp
 	$(CC) -c -o game.o game.cpp
