@@ -5,7 +5,11 @@
 
 int main(int argc, char *argv[], char *envp[])
 {
-    fom::make_engine();
+    fom::init_engine();
+
+    fom::run_engine();
+
+    fom::quit_engine();
 
     return(0);
 }

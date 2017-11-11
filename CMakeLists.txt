@@ -10,12 +10,14 @@ set (GAME_DIR game)
 
 set (INCLUDE_FILES
         ${ENGINE_DIR}/include/Engine.hpp
+        ${ENGINE_DIR}/include/Exceptions.hpp
         )
 
 set(SOURCE_FILES
         ${GAME_DIR}/game.cpp
 
         ${ENGINE_DIR}/src/Engine.cpp
+        ${ENGINE_DIR}/src/Exceptions.cpp
 
         ${INCLUDE_FILES}
         )
@@ -34,4 +36,6 @@ target_link_libraries(
         pthread
         SDL2
         SDL2_image
+        SDL2_ttf
+        SDL2_mixer
 )
