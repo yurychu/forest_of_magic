@@ -5,7 +5,6 @@
 #include <type_traits>
 
 
-
 namespace fom {
 
     class ExceptionEngine : public std::runtime_error

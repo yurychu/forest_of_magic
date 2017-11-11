@@ -9,15 +9,22 @@ set (ENGINE_DIR engine)
 set (GAME_DIR game)
 
 set (INCLUDE_FILES
+        ${ENGINE_DIR}/include/Project.hpp
+        ${ENGINE_DIR}/include/Window.hpp
+        ${ENGINE_DIR}/include/Renderer.hpp
         ${ENGINE_DIR}/include/Engine.hpp
         ${ENGINE_DIR}/include/Exceptions.hpp
+        ${ENGINE_DIR}/include/GameManager.hpp
         )
 
 set(SOURCE_FILES
         ${GAME_DIR}/game.cpp
 
+        ${ENGINE_DIR}/src/Window.cpp
+        ${ENGINE_DIR}/src/Renderer.cpp
         ${ENGINE_DIR}/src/Engine.cpp
         ${ENGINE_DIR}/src/Exceptions.cpp
+        ${ENGINE_DIR}/src/GameManager.cpp
 
         ${INCLUDE_FILES}
         )

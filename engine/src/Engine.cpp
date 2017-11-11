@@ -1,11 +1,10 @@
 #include <iostream>
 #include <stdexcept>
 
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
-
 #include "Engine.hpp"
+#include "Window.hpp"
+#include "Renderer.hpp"
+#include "GameManager.hpp"
 #include "Exceptions.hpp"
 
 
@@ -55,77 +54,24 @@ fom::init_engine()
 void
 fom::run_engine()
 {
+    fom::GameManager gm;
     fom::Window window("Some title", 800, 600);
     fom::Renderer renderer(window);
-    renderer.clear();
-    renderer.present();
-    SDL_Delay(5000);
+
+    while (gm.is_running()){
+        gm.handle_events();
+        gm.update_objects();
+        gm.render(renderer);
+    }
 }
 
 void
 fom::quit_engine()
 {
+    Mix_Quit();
+    TTF_Quit();
+    IMG_Quit();
     SDL_Quit();
 }
 
 
-/*-------------------------------------------------------*/
-fom::Window::Window(const std::string &title, int width, int height)
-    :itsWindow(nullptr)
-{
-    const auto flags = SDL_WINDOW_SHOWN;
-    itsWindow = SDL_CreateWindow(
-            title.c_str(),
-            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-            width, height,
-            flags
-    );
-
-    if(itsWindow == nullptr)
-    {
-        const std::string err_msg = SDL_GetError();
-        throw fom::ExceptionEngine("Could not create window! Error: " + err_msg);
-    }
-}
-
-fom::Window::~Window()
-{
-    std::cout << "Window destructing" << std::endl;
-    SDL_DestroyWindow(itsWindow);
-    itsWindow = nullptr;
-}
-
-
-/*-------------------------------------------------------*/
-fom::Renderer::Renderer(const fom::Window & window)
-    :itsRenderer(nullptr)
-{
-    const auto flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
-    itsRenderer = SDL_CreateRenderer(window.get(), -1, flags);
-
-    if(itsRenderer == nullptr)
-    {
-        const std::string err_msg = SDL_GetError();
-        throw fom::ExceptionEngine("Could not create renderer! Error: " + err_msg);
-    }
-}
-
-fom::Renderer::~Renderer()
-{
-    std::cout << "Renderer destructing" << std::endl;
-    SDL_DestroyRenderer(itsRenderer);
-    itsRenderer = nullptr;
-};
-
-void
-fom::Renderer::clear()
-{
-    SDL_SetRenderDrawColor(itsRenderer, 0, 0, 0, 255);
-    SDL_RenderClear(itsRenderer);
-}
-
-void
-fom::Renderer::present()
-{
-    SDL_RenderPresent(itsRenderer);
-}
