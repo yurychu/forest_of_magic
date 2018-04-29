@@ -26,7 +26,6 @@ namespace fom {
 
 		bool init(
 			const std::string & title,
-			int xpos, int ypos,
 			int width, int height,
 			bool fullscreen
 		);

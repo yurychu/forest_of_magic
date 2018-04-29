@@ -29,37 +29,42 @@ fom::Game::create()
 }
 
 bool
-fom::Game::init(const std::string & title, int xpos, int ypos, int width, int height, bool fullscreen)
+fom::Game::init(const std::string & title, int width, int height, bool fullscreen)
 {
-	bool result = false;
-	int flags = 0;
+	auto result = false;
+	auto window_flags = SDL_WINDOW_SHOWN;
 
 	if (fullscreen){
-		flags = SDL_WINDOW_FULLSCREEN;
+		window_flags = SDL_WINDOW_FULLSCREEN;
 	}
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0){
 		itsWindow = SDL_CreateWindow(
 			title.c_str(),
-			xpos, ypos,
-			width, height,			flags		);
+			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+			width, height,			window_flags		);
 		if (itsWindow){
-			itsRenderer = SDL_CreateRenderer(itsWindow, -1, 0);
+			const auto renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
+			const int driver = -1;
+			itsRenderer = SDL_CreateRenderer(itsWindow, driver, renderer_flags);
 
 			if (itsRenderer){
 				SDL_SetRenderDrawColor(itsRenderer, 0, 255, 0, 255);
 				result = true;
 			}
 			else {
-				fom::cout_message("renderer init fail");
+				const std::string err_msg = SDL_GetError();
+				fom::cout_message("renderer init fail: " + err_msg);	
 			}
 		}
 		else {
-			fom::cout_message("window init fail");
+			const std::string err_msg = SDL_GetError();
+			fom::cout_message("window init fail: " + err_msg);
 		}
 	}
 	else {
-		fom::cout_message("SDL init fail");
+		const std::string err_msg = SDL_GetError();
+		fom::cout_message("SDL init fail: " + err_msg);
 	}
 
 	itsRunning = result;
