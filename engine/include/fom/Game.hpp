@@ -17,7 +17,9 @@ namespace fom {
 		bool itsRunning;
 
 		SDL_Window * itsWindow;
-		SDL_Renderer * itsRenderer;
+		SDL_Renderer * itsRenderer;		SDL_Texture * itsTexture;
+		SDL_Rect itsSourceRectangle;
+		SDL_Rect itsDestinationRectangle;
 	public:
 		Game();
 		~Game();

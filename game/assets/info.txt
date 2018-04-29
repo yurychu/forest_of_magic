@@ -1,0 +1,1 @@
+need load assets from another place

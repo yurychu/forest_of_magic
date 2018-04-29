@@ -14,7 +14,8 @@ fom::Game::Game()
 	:
 	itsRunning(false),
 	itsWindow(nullptr),
-	itsRenderer(nullptr)
+	itsRenderer(nullptr),
+	itsTexture(nullptr)
 {
 }
 
@@ -49,7 +50,7 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 			itsRenderer = SDL_CreateRenderer(itsWindow, driver, renderer_flags);
 
 			if (itsRenderer){
-				SDL_SetRenderDrawColor(itsRenderer, 0, 255, 0, 255);
+				SDL_SetRenderDrawColor(itsRenderer, 0, 255, 255, 255);
 				result = true;
 			}
 			else {
@@ -68,6 +69,24 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 	}
 
 	itsRunning = result;
+
+	// load textures
+	auto temp_surface = SDL_LoadBMP("assets/files/player.bmp");
+	if (temp_surface) {
+		itsTexture = SDL_CreateTextureFromSurface(itsRenderer, temp_surface);
+		SDL_FreeSurface(temp_surface);
+
+		if (SDL_QueryTexture(itsTexture, 0, 0, &itsSourceRectangle.w, &itsSourceRectangle.h) == 0) {
+			std::cout << "Source rect: w: " << itsSourceRectangle.w << " h: " << itsSourceRectangle.h << std::endl;
+		}
+
+	}
+	else {
+		const std::string err_msg = SDL_GetError();
+		fom::cout_message("SDL fail load BMP: " + err_msg);
+	}
+
+
 
 	return result;
 }
