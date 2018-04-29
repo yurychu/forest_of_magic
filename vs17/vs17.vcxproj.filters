@@ -13,15 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\fom">
+      <UniqueIdentifier>{ec2e311e-c294-4986-a250-f26f9a9fea98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\fom">
+      <UniqueIdentifier>{510636c2-631c-4c40-8568-bb178bc8a308}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\game\game.cpp">
+    <ClCompile Include="..\engine\src\fom\Game.cpp">
+      <Filter>Файлы ресурсов\fom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\app.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\game\windows_functions.h">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\include\fom\Game.hpp">
+      <Filter>Файлы заголовков\fom</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

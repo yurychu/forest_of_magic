@@ -121,9 +121,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\game\game.cpp" />
+    <ClCompile Include="..\engine\src\fom\Game.cpp" />
+    <ClCompile Include="..\game\app.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\engine\include\fom\Game.hpp" />
     <ClInclude Include="..\game\windows_functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
