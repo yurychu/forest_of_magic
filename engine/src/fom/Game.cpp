@@ -43,7 +43,10 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 		itsWindow = SDL_CreateWindow(
 			title.c_str(),
 			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			width, height,			window_flags		);
+			width, height,
+			window_flags
+		);
+
 		if (itsWindow){
 			const auto renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
 			const int driver = -1;
@@ -71,13 +74,20 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 	itsRunning = result;
 
 	// load textures
-	auto temp_surface = SDL_LoadBMP("assets/files/player.bmp");
+	auto temp_surface = SDL_LoadBMP("assets/files/walking_man.bmp");
 	if (temp_surface) {
 		itsTexture = SDL_CreateTextureFromSurface(itsRenderer, temp_surface);
 		SDL_FreeSurface(temp_surface);
 
 		if (SDL_QueryTexture(itsTexture, 0, 0, &itsSourceRectangle.w, &itsSourceRectangle.h) == 0) {
-			std::cout << "Source rect: w: " << itsSourceRectangle.w << " h: " << itsSourceRectangle.h << std::endl;
+			
+			
+			itsSourceRectangle.w = std::floor(itsSourceRectangle.w / 8);
+
+			itsDestinationRectangle.x = itsSourceRectangle.x = 0;
+			itsDestinationRectangle.y = itsSourceRectangle.y = 0;
+			itsDestinationRectangle.w = itsSourceRectangle.w;
+			itsDestinationRectangle.h = itsSourceRectangle.h;
 		}
 
 	}
@@ -95,12 +105,14 @@ void
 fom::Game::render()
 {
 	SDL_RenderClear(itsRenderer);
+	SDL_RenderCopy(itsRenderer, itsTexture, &itsSourceRectangle, &itsDestinationRectangle);
 	SDL_RenderPresent(itsRenderer);
 }
 
 void
 fom::Game::update()
 {
+	itsSourceRectangle.x = itsSourceRectangle.w * int(((SDL_GetTicks() / 150) % 8));
 }
 
 void
