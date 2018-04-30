@@ -27,12 +27,18 @@
     <ClCompile Include="..\game\app.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="..\engine\src\fom\TextureManager.cpp">
+      <Filter>Файлы ресурсов\fom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\game\windows_functions.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\include\fom\Game.hpp">
+      <Filter>Файлы заголовков\fom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\include\fom\TextureManager.hpp">
       <Filter>Файлы заголовков\fom</Filter>
     </ClInclude>
   </ItemGroup>

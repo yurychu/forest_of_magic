@@ -2,6 +2,7 @@
 
 #include "../../include/fom/Game.hpp"
 
+#include "../../include/fom/TextureManager.hpp"
 
 void
 fom::cout_message(const std::string & msg)
@@ -14,8 +15,7 @@ fom::Game::Game()
 	:
 	itsRunning(false),
 	itsWindow(nullptr),
-	itsRenderer(nullptr),
-	itsTexture(nullptr)
+	itsRenderer(nullptr)
 {
 }
 
@@ -71,27 +71,12 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 		fom::cout_message("SDL init fail: " + err_msg);
 	}
 
+	if (!fom::TheTextureManager::instance().load("assets/files/walking_man_colored.png",
+		"animate", itsRenderer)) {
+		result = false;
+	}
+	
 	itsRunning = result;
-
-	// load textures
-	auto temp_surface = IMG_Load("assets/files/walking_man_colored.png");
-	if (temp_surface) {
-		itsTexture = SDL_CreateTextureFromSurface(itsRenderer, temp_surface);
-		SDL_FreeSurface(temp_surface);
-
-		if (SDL_QueryTexture(itsTexture, 0, 0, &itsSourceRectangle.w, &itsSourceRectangle.h) == 0) {
-			itsSourceRectangle.w = itsSourceRectangle.w / 8;
-
-			itsDestinationRectangle.x = itsSourceRectangle.x = 0;
-			itsDestinationRectangle.y = itsSourceRectangle.y = 0;
-			itsDestinationRectangle.w = itsSourceRectangle.w;
-			itsDestinationRectangle.h = itsSourceRectangle.h;
-		}
-	}
-	else {
-		const std::string err_msg = SDL_GetError();
-		fom::cout_message("SDL fail load BMP: " + err_msg);
-	}
 
 	return result;
 }
@@ -100,15 +85,18 @@ void
 fom::Game::render()
 {
 	SDL_RenderClear(itsRenderer);
-	SDL_RenderCopy(itsRenderer, itsTexture, &itsSourceRectangle, &itsDestinationRectangle);
-	// SDL_RenderCopyEx(itsRenderer, itsTexture, &itsSourceRectangle, &itsDestinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+
+	fom::TheTextureManager::instance().draw("animate", 0, 0, 128, 82, itsRenderer);
+	fom::TheTextureManager::instance().draw_frame("animate", 100, 100, 128, 82,
+		1, itsCurrentFrame, itsRenderer);
+
 	SDL_RenderPresent(itsRenderer);
 }
 
 void
 fom::Game::update()
 {
-	itsSourceRectangle.x = itsSourceRectangle.w * int((SDL_GetTicks() / 150) % 8);
+	itsCurrentFrame = int(((SDL_GetTicks() / 100) % 8));
 }
 
 void

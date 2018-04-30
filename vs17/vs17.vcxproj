@@ -122,10 +122,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\engine\src\fom\Game.cpp" />
+    <ClCompile Include="..\engine\src\fom\TextureManager.cpp" />
     <ClCompile Include="..\game\app.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\engine\include\fom\Game.hpp" />
+    <ClInclude Include="..\engine\include\fom\TextureManager.hpp" />
     <ClInclude Include="..\game\windows_functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
