@@ -6,6 +6,8 @@
 #include <string>
 
 #include<SDL.h>
+#include<SDL_image.h>
+
 
 namespace fom {
 
@@ -17,9 +19,12 @@ namespace fom {
 		bool itsRunning;
 
 		SDL_Window * itsWindow;
-		SDL_Renderer * itsRenderer;		SDL_Texture * itsTexture;
+		SDL_Renderer * itsRenderer;
+
+		SDL_Texture * itsTexture;
 		SDL_Rect itsSourceRectangle;
-		SDL_Rect itsDestinationRectangle;
+		SDL_Rect itsDestinationRectangle;
+
 	public:
 		Game();
 		~Game();

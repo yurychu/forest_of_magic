@@ -74,7 +74,7 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 	itsRunning = result;
 
 	// load textures
-	auto temp_surface = SDL_LoadBMP("assets/files/walking_man.bmp");
+	auto temp_surface = IMG_Load("assets/files/walking_man_colored.png");
 	if (temp_surface) {
 		itsTexture = SDL_CreateTextureFromSurface(itsRenderer, temp_surface);
 		SDL_FreeSurface(temp_surface);
@@ -101,6 +101,7 @@ fom::Game::render()
 {
 	SDL_RenderClear(itsRenderer);
 	SDL_RenderCopy(itsRenderer, itsTexture, &itsSourceRectangle, &itsDestinationRectangle);
+	// SDL_RenderCopyEx(itsRenderer, itsTexture, &itsSourceRectangle, &itsDestinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
 	SDL_RenderPresent(itsRenderer);
 }
 
