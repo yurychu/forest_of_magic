@@ -4,9 +4,13 @@
 #include <memory>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include<SDL.h>
 #include<SDL_image.h>
+
+#include "../../include/fom/GameOjbect.hpp"
+#include "../../include/fom/Player.hpp"
 
 
 namespace fom {
@@ -20,6 +24,8 @@ namespace fom {
 
 		SDL_Window * itsWindow;
 		SDL_Renderer * itsRenderer;
+
+		std::vector<fom::GameObject * > itsGameObjects;
 
 		int itsCurrentFrame;
 

@@ -30,6 +30,12 @@
     <ClCompile Include="..\engine\src\fom\TextureManager.cpp">
       <Filter>Файлы ресурсов\fom</Filter>
     </ClCompile>
+    <ClCompile Include="..\engine\src\fom\Player.cpp">
+      <Filter>Файлы ресурсов\fom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\src\fom\GameOjbect.cpp">
+      <Filter>Файлы ресурсов\fom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\game\windows_functions.h">
@@ -39,6 +45,12 @@
       <Filter>Файлы заголовков\fom</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\include\fom\TextureManager.hpp">
+      <Filter>Файлы заголовков\fom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\include\fom\GameOjbect.hpp">
+      <Filter>Файлы заголовков\fom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\include\fom\Player.hpp">
       <Filter>Файлы заголовков\fom</Filter>
     </ClInclude>
   </ItemGroup>

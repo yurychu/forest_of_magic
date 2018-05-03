@@ -75,6 +75,9 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 		"animate", itsRenderer)) {
 		result = false;
 	}
+
+	itsGO.load(100, 100, 128, 82, "animate");
+	itsPlayer.load(300, 300, 128, 82, "animate");
 	
 	itsRunning = result;
 
@@ -86,9 +89,9 @@ fom::Game::render()
 {
 	SDL_RenderClear(itsRenderer);
 
-	fom::TheTextureManager::instance().draw("animate", 0, 0, 128, 82, itsRenderer);
-	fom::TheTextureManager::instance().draw_frame("animate", 100, 100, 128, 82,
-		1, itsCurrentFrame, itsRenderer);
+	for (const auto obj : itsGameObjects) {
+		obj->draw(itsRenderer);
+	}
 
 	SDL_RenderPresent(itsRenderer);
 }
@@ -96,7 +99,9 @@ fom::Game::render()
 void
 fom::Game::update()
 {
-	itsCurrentFrame = int(((SDL_GetTicks() / 100) % 8));
+	itsGO.update();
+	itsPlayer.update();
+	// itsCurrentFrame = int(((SDL_GetTicks() / 100) % 8));
 }
 
 void
