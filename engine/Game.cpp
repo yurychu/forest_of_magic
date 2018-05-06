@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../../include/fom/Game.hpp"
+#include "Game.hpp"
 
-#include "../../include/fom/TextureManager.hpp"
+#include "TextureManager.hpp"
 
 void
 fom::cout_message(const std::string & msg)

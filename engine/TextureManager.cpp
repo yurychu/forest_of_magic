@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "..\..\include\fom\TextureManager.hpp"
+#include "TextureManager.hpp"
 
 
 fom::TextureManager::TextureManager()

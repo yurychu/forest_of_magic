@@ -1,5 +1,5 @@
-#include "..\..\include\fom\GameOjbect.hpp"
-#include "..\..\include\fom\TextureManager.hpp"
+#include "GameOjbect.hpp"
+#include "TextureManager.hpp"
 
 
 void fom::GameObject::load(int x, int y, int width, int height, const std::string & texture_id)

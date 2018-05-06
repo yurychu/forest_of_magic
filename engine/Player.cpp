@@ -1,4 +1,4 @@
-#include "../../include/fom/Player.hpp"
+#include "Player.hpp"
 
 
 void fom::Player::load(int x, int y, int width, int height, const std::string & texture_id)

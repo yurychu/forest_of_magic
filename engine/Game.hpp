@@ -9,8 +9,8 @@
 #include<SDL.h>
 #include<SDL_image.h>
 
-#include "../../include/fom/GameOjbect.hpp"
-#include "../../include/fom/Player.hpp"
+#include "GameOjbect.hpp"
+#include "Player.hpp"
 
 
 namespace fom {

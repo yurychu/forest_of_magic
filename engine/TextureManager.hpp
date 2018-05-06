@@ -33,12 +33,15 @@ namespace fom {
 		}
 		
 		bool load(const std::string & file_name, const std::string & id,
-			SDL_Renderer * renderer);
+			SDL_Renderer * renderer);
+
 		void draw(const std::string & id, int x, int y, int width, int height,
 			SDL_Renderer * renderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
 
 		void draw_frame(const std::string & id, int x, int y, int width, int height,
-			int current_row, int current_frame,			SDL_Renderer * pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
+			int current_row, int current_frame,
+			SDL_Renderer * pRenderer, SDL_RendererFlip flip=SDL_FLIP_NONE);
+
 	};
 
 	using TheTextureManager = TextureManager;

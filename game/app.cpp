@@ -3,7 +3,7 @@
 
 #include "windows_functions.h"
 
-#include "../engine/include/fom/Game.hpp"
+#include "../engine/Game.hpp"
 
 
 int main(int argc, char * argv [])
