@@ -15,7 +15,8 @@ fom::Game::Game()
 	:
 	itsRunning(false),
 	itsWindow(nullptr),
-	itsRenderer(nullptr)
+	itsRenderer(nullptr),
+	itsCurrentState(fom::GameStateType::PROMO)
 {
 }
 
@@ -75,9 +76,6 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 		"animate", itsRenderer)) {
 		result = false;
 	}
-
-	itsGO.load(100, 100, 128, 82, "animate");
-	itsPlayer.load(300, 300, 128, 82, "animate");
 	
 	itsRunning = result;
 
@@ -89,7 +87,7 @@ fom::Game::render()
 {
 	SDL_RenderClear(itsRenderer);
 
-	for (const auto obj : itsGameObjects) {
+	for (const auto & obj : itsGameObjects) {
 		obj->draw(itsRenderer);
 	}
 
@@ -99,8 +97,6 @@ fom::Game::render()
 void
 fom::Game::update()
 {
-	itsGO.update();
-	itsPlayer.update();
 	// itsCurrentFrame = int(((SDL_GetTicks() / 100) % 8));
 }
 

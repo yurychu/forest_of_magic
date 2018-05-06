@@ -13,10 +13,23 @@ namespace fom {
 
 	void cout_message(const std::string & msg);
 
+	class Texture
+	{
+	private:
+		std::string itsName;
+
+	public:
+		Texture(const std::string & name)
+			:itsName(name)
+		{
+		}
+		~Texture() = default;
+
+	};
+
 	class TextureManager
 	{
 	private:
-
 		std::map <std::string, SDL_Texture * > itsTextureMap;
 
 	private:
@@ -44,7 +57,6 @@ namespace fom {
 
 	};
 
-	using TheTextureManager = TextureManager;
 }
 
 #endif  // !FOM_TEXTURE_MANAGER_HPP

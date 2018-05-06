@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-#include <SDL.h>
 
 
 namespace fom {

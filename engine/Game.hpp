@@ -17,6 +17,27 @@ namespace fom {
 
 	void cout_message(const std::string & msg);
 
+	enum class GameStateType
+	{
+		PROMO = 1,
+		START_MENU = 2,
+		GAMEPLAY = 3,
+		PAUSE = 4
+	};
+
+	class GameState
+	{
+	private:
+		std::vector <fom::GameObject> itsObjects;
+
+	public:
+		GameState() = default;
+		~GameState() = default;
+
+		void 
+	};
+
+
 	class Game
 	{
 	private:
@@ -25,15 +46,18 @@ namespace fom {
 		SDL_Window * itsWindow;
 		SDL_Renderer * itsRenderer;
 
-		std::vector<fom::GameObject * > itsGameObjects;
-
-		int itsCurrentFrame;
+		fom::GameStateType itsCurrentState;
+		std::map <
+			fom::GameStateType,
+			std::shared_ptr <fom::GameState>
+		> itsGameStates;
 
 	public:
 		Game();
 		~Game();
 
-		static std::shared_ptr<fom::Game> create();
+		static std::shared_ptr<fom::Game>
+		create();
 
 		bool init(
 			const std::string & title,
@@ -46,7 +70,7 @@ namespace fom {
 		void handle_events();
 		void clean();
 
-		bool running()
+		bool running() const
 		{
 			return itsRunning;
 		}

@@ -1,5 +1,4 @@
 #include "GameOjbect.hpp"
-#include "TextureManager.hpp"
 
 
 void fom::GameObject::load(int x, int y, int width, int height, const std::string & texture_id)
@@ -13,7 +12,7 @@ void fom::GameObject::load(int x, int y, int width, int height, const std::strin
 	itsCurrentFrame = 1;
 }
 
-void fom::GameObject::draw(SDL_Renderer * renderer)
+void fom::GameObject::draw(fom::Renderer & renderer)
 {
 	fom::TextureManager::instance().draw_frame(itsTextureId, itsX, itsY,
 		itsWidth, itsHeight, itsCurrentRow, itsCurrentFrame, renderer);
