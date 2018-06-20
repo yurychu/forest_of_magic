@@ -8,7 +8,7 @@ void fom::Player::load(int x, int y, int width, int height, const std::string & 
 
 void fom::Player::draw(SDL_Renderer * renderer)
 {
-	fom::GameObject::draw(renderer);
+//	fom::GameObject::draw(renderer);
 }
 
 void fom::Player::update()

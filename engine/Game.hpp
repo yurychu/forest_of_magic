@@ -5,17 +5,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
-#include<SDL.h>
-#include<SDL_image.h>
+#include<SDL2/SDL.h>
+#include<SDL2/SDL_image.h>
 
-#include "GameOjbect.hpp"
+#include "GameObject.hpp"
 #include "Player.hpp"
 
 
 namespace fom {
 
 	void cout_message(const std::string & msg);
+
 
 	enum class GameStateType
 	{
@@ -34,7 +36,6 @@ namespace fom {
 		GameState() = default;
 		~GameState() = default;
 
-		void 
 	};
 
 

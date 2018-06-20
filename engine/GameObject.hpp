@@ -2,7 +2,7 @@
 #define FOM_GAME_OBJECT_HPP
 
 #include <iostream>
-
+#include <SDL2/SDL.h>
 
 
 namespace fom {
@@ -26,7 +26,7 @@ namespace fom {
 		virtual ~GameObject() = default;
 
 		virtual void load(int x, int y, int width, int height, const std::string & texture_id);
-		virtual void draw(SDL_Renderer * renderer);
+//		virtual void draw(SDL_Renderer * renderer);
 		virtual void update();
 		virtual void clean() { std::cout << "clean game object" << std::endl; }
 

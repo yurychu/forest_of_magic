@@ -1,4 +1,4 @@
-#include "GameOjbect.hpp"
+#include "GameObject.hpp"
 
 
 void fom::GameObject::load(int x, int y, int width, int height, const std::string & texture_id)
@@ -11,12 +11,12 @@ void fom::GameObject::load(int x, int y, int width, int height, const std::strin
 	itsCurrentRow = 1;
 	itsCurrentFrame = 1;
 }
-
-void fom::GameObject::draw(fom::Renderer & renderer)
-{
-	fom::TextureManager::instance().draw_frame(itsTextureId, itsX, itsY,
-		itsWidth, itsHeight, itsCurrentRow, itsCurrentFrame, renderer);
-}
+//
+//void fom::GameObject::draw(fom::Renderer & renderer)
+//{
+//	fom::TextureManager::instance().draw_frame(itsTextureId, itsX, itsY,
+//		itsWidth, itsHeight, itsCurrentRow, itsCurrentFrame, renderer);
+//}
 
 void fom::GameObject::update()
 {

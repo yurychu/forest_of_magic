@@ -2,47 +2,71 @@ cmake_minimum_required(VERSION 3.5)
 project(forest_of_magic)
 
 set(CMAKE_CXX_STANDARD 14)
-add_compile_options(-Wall)
+add_compile_options(-Wall -Wno-unused-function)
 
+set(CMAKE_BUILD_TYPE Debug)
 
-set (ENGINE_DIR engine)
-set (GAME_DIR game)
+IF(CMAKE_BUILD_TYPE MATCHES Debug)
+    add_definitions(-DSOME_DEFINITION)
+ENDIF(CMAKE_BUILD_TYPE MATCHES Debug)
 
-set (INCLUDE_FILES
-        ${ENGINE_DIR}/include/Project.hpp
-        ${ENGINE_DIR}/include/Window.hpp
-        ${ENGINE_DIR}/include/Renderer.hpp
-        ${ENGINE_DIR}/include/Engine.hpp
-        ${ENGINE_DIR}/include/Exceptions.hpp
-        ${ENGINE_DIR}/include/GameManager.hpp
+set(INSTALLED_LIBS_DIR
+        /home/yurychu/Developing/installed_libs
         )
 
-set(SOURCE_FILES
-        ${GAME_DIR}/game.cpp
+set(ENGINE_DIR engine)
+set(SOURCE_ENGINE
+        engine/Game.cpp
+        engine/Game.hpp
+        engine/GameObject.cpp
+        engine/GameObject.hpp
+        engine/Player.cpp
+        engine/Player.hpp
+        engine/TextureManager.cpp
+        engine/TextureManager.hpp
 
-        ${ENGINE_DIR}/src/Window.cpp
-        ${ENGINE_DIR}/src/Renderer.cpp
-        ${ENGINE_DIR}/src/Engine.cpp
-        ${ENGINE_DIR}/src/Exceptions.cpp
-        ${ENGINE_DIR}/src/GameManager.cpp
+        )
+
+set(GAME_APP_NAME game_app)
+set(GAME_DIR game)
+set(SOURCE_FILES
+        ${GAME_DIR}/app.cpp
+
+        ${SOURCE_ENGINE}
 
         ${INCLUDE_FILES}
         )
 
+# SDL SETTINGS
+set(SDL_HOME
+        ${INSTALLED_LIBS_DIR}/SDL208
+        )
+
+# COMMON SETTINGS
 include_directories(
-        ${ENGINE_DIR}/include
+        ${SDL_HOME}/include
+
+        ${ENGINE_DIR}
+)
+
+link_directories(
+        ${SDL_HOME}/lib
 )
 
 add_executable(
-        ${CMAKE_PROJECT_NAME}
+        ${GAME_APP_NAME}
         ${SOURCE_FILES}
 )
 
-target_link_libraries(
-        ${CMAKE_PROJECT_NAME}
-        pthread
+set(SDL_LIB_NAMES
         SDL2
         SDL2_image
-        SDL2_ttf
-        SDL2_mixer
+        )
+
+target_link_libraries(
+        ${GAME_APP_NAME}
+
+        pthread
+
+        ${SDL_LIB_NAMES}
 )

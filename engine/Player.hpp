@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "GameOjbect.hpp"
+#include "GameObject.hpp"
 
 namespace fom {
 

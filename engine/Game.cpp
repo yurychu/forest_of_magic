@@ -4,6 +4,7 @@
 
 #include "TextureManager.hpp"
 
+
 void
 fom::cout_message(const std::string & msg)
 {
@@ -72,10 +73,10 @@ fom::Game::init(const std::string & title, int width, int height, bool fullscree
 		fom::cout_message("SDL init fail: " + err_msg);
 	}
 
-	if (!fom::TheTextureManager::instance().load("assets/files/walking_man_colored.png",
-		"animate", itsRenderer)) {
-		result = false;
-	}
+//	if (!fom::TheTextureManager::instance().load("assets/files/walking_man_colored.png",
+//		"animate", itsRenderer)) {
+//		result = false;
+//	}
 	
 	itsRunning = result;
 
@@ -87,9 +88,9 @@ fom::Game::render()
 {
 	SDL_RenderClear(itsRenderer);
 
-	for (const auto & obj : itsGameObjects) {
-		obj->draw(itsRenderer);
-	}
+//	for (const auto & obj : itsGameObjects) {
+//		obj->draw(itsRenderer);
+//	}
 
 	SDL_RenderPresent(itsRenderer);
 }

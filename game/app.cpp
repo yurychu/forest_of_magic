@@ -1,16 +1,11 @@
 #include <iostream>
 #include <string>
 
-#include "windows_functions.h"
-
-#include "../engine/Game.hpp"
+#include <Game.hpp>
 
 
 int main(int argc, char * argv [])
 {
-	// helpers functional
-	make_console();
-	
 	// code here
 	auto game = fom::Game::create();
 
