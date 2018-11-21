@@ -4,25 +4,24 @@ include_directories(
 )
 
 
-set (INC_GAME
-        Game.hpp
+set (INC_EDITOR
 
-)
+        )
 
-set (SRC_GAME
-        game.cpp
+set (SRC_EDITOR
+        editor.cpp
         )
 
 
 add_executable(
-        game
-        ${INC_GAME}
-        ${SRC_GAME}
+        editor
+        ${INC_EDITOR}
+        ${SRC_EDITOR}
 )
 
 
 target_link_libraries(
-        game
+        editor
         LINK_PUBLIC
         fom_engine
 )

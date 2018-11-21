@@ -13,4 +13,4 @@ ENDIF(CMAKE_BUILD_TYPE MATCHES Debug)
 
 add_subdirectory(engine)
 add_subdirectory(game)
-
+add_subdirectory(editor)
