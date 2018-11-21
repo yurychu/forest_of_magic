@@ -4,14 +4,12 @@
 #include <iostream>
 #include <string>
 
-#include <engine/GameObject.hpp>
+#include <engine/Developing.hpp>
 
 
 void say_run()
 {
-    fom::GameObject gm;
-    gm.update();
-    std::cout << "RUN" << std::endl;
+    run_all();
 }
 
 

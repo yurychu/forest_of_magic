@@ -21,8 +21,16 @@ add_executable(
 )
 
 
+link_directories(
+        /home/yurych4/developing/installs/lib
+
+)
+
 target_link_libraries(
         game
-        LINK_PUBLIC
+        PUBLIC
         fom_engine
+
+        SDL2
+
 )
