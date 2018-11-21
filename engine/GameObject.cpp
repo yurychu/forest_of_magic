@@ -20,5 +20,5 @@ void fom::GameObject::load(int x, int y, int width, int height, const std::strin
 
 void fom::GameObject::update()
 {
-	itsX -= 1;
+	std::cout << "I'm updated!" << std::endl;
 }
