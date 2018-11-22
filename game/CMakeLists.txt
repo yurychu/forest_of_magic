@@ -11,6 +11,7 @@ set (INC_GAME
 
 set (SRC_GAME
         game.cpp
+
         )
 
 
@@ -20,17 +21,8 @@ add_executable(
         ${SRC_GAME}
 )
 
-
-link_directories(
-        /home/yurych4/developing/installs/lib
-
-)
-
 target_link_libraries(
         game
         PUBLIC
         fom_engine
-
-        SDL2
-
 )

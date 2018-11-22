@@ -10,11 +10,14 @@ set(SRC_ENGINE
 )
 
 
+
+
 add_library(
         fom_engine
         ${INC_ENGINE}
         ${SRC_ENGINE}
 )
+
 
 target_include_directories(
         fom_engine
@@ -25,3 +28,10 @@ target_include_directories(
 
 )
 
+
+find_library(SDL_LIBRARY SDL2 HINTS /home/yurych4/developing/installs/lib)
+
+target_link_libraries(
+        fom_engine
+        ${SDL_LIBRARY}
+)
