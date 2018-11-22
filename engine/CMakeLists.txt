@@ -14,6 +14,7 @@ set(SRC_ENGINE
 
 add_library(
         fom_engine
+        STATIC
         ${INC_ENGINE}
         ${SRC_ENGINE}
 )
