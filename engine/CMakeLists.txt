@@ -19,6 +19,7 @@ add_library(
         ${SRC_ENGINE}
 )
 
+set_property(TARGET fom_engine APPEND PROPERTY CXX_STANDARD 14)
 
 target_include_directories(
         fom_engine

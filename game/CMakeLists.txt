@@ -21,6 +21,8 @@ add_executable(
         ${SRC_GAME}
 )
 
+set_property(TARGET game APPEND PROPERTY CXX_STANDARD 14)
+
 target_link_libraries(
         game
         PUBLIC

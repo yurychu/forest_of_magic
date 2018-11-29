@@ -19,6 +19,7 @@ add_executable(
         ${SRC_EDITOR}
 )
 
+set_property(TARGET editor APPEND PROPERTY CXX_STANDARD 14)
 
 target_link_libraries(
         editor
