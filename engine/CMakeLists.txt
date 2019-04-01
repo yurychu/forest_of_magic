@@ -1,22 +1,15 @@
+project(fom_engine_project)
 
-
-set(INC_ENGINE
-        GameObject.hpp
-        Developing.hpp
-)
-
-set(SRC_ENGINE
-        GameObject.cpp
-)
-
-
-
+cmake_policy(SET CMP0074 NEW)  # package_ROOT env variable to find
 
 add_library(
         fom_engine
         STATIC
-        ${INC_ENGINE}
-        ${SRC_ENGINE}
+
+		shape_generator/ShapeGenerator.cpp
+
+		include/fom/ShapeGenerator.hpp
+
 )
 
 set_property(TARGET fom_engine APPEND PROPERTY CXX_STANDARD 14)
@@ -24,16 +17,24 @@ set_property(TARGET fom_engine APPEND PROPERTY CXX_STANDARD 14)
 target_include_directories(
         fom_engine
         PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
-
-        /home/yurych4/developing/installs/include
-
+        include
 )
 
+## If you want to link SFML statically
+# set(SFML_STATIC_LIBRARIES TRUE)
+## In most cases better set in the CMake cache
+# set(SFML_DIR "E:\\developing\\SFML-2.5.1\\lib\\cmake\\SFML")
 
-find_library(SDL_LIBRARY SDL2 HINTS /home/yurych4/developing/installs/lib)
+find_package(SFML 2.5
+	COMPONENTS graphics audio
+	REQUIRED
+#	HINTS
+#	$ENV{SFML_ROOT}
+	)
 
 target_link_libraries(
         fom_engine
-        ${SDL_LIBRARY}
+        
+		sfml-graphics
+		sfml-audio
 )
