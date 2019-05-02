@@ -18,3 +18,13 @@ target_include_directories(
 		PRIVATE
 		include/shape_generator
 )
+
+get_target_property(MY_VAR my_super_lib HI_THERE)
+message(STATUS "My var: ${MY_VAR}")
+
+target_link_libraries(
+        shape_generator_lib
+
+        PRIVATE
+        my_super_lib
+)
