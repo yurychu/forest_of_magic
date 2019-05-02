@@ -11,5 +11,5 @@ target_link_libraries(
         game
 
         PRIVATE
-        fom_engine
+        fom_lib
 )

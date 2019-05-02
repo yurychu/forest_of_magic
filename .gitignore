@@ -38,6 +38,7 @@ cmake-build-debug/
 # Visual Studio
 .vs
 vs17/x64/*
+CMakeSettings.json
 
 # Assets
 game/assets/files/*

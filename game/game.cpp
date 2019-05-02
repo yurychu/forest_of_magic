@@ -1,11 +1,11 @@
 #include <cstdlib>
 
-#include "Game.hpp"
+#include <fom/fom.hpp>
 
 
 int main(int argc, char * argv [])
 {
-    say_run();
+    fom::print_versions();
 
     return EXIT_SUCCESS;
 }
