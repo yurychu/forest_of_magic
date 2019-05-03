@@ -46,3 +46,4 @@ game/assets/files/*
 
 # ext libs
 fom_engine/ext_libs/lua/lua535vc15_64
+fom_engine/ext_libs/lua/lua535vc15_64_shared
