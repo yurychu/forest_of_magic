@@ -4,3 +4,4 @@ project(fom_engine_project)
 
 add_subdirectory(fom)
 add_subdirectory(shape_generator)
+add_subdirectory(scripter)

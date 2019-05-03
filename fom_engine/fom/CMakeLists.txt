@@ -20,5 +20,6 @@ target_link_libraries(
 
         PRIVATE
 		shape_generator_lib
+		scripter_lib
 
 )
