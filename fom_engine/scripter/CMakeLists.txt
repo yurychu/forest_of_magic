@@ -25,3 +25,12 @@ target_include_directories(
 		include/scripter
         ${LUA_INCLUDE_DIR}
 )
+
+target_link_libraries(
+		scripter_lib
+
+		PRIVATE
+		${LUA_LIBRARIES}
+
+
+)
