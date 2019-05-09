@@ -9,6 +9,7 @@
 namespace fom
 {
     std::string get_scripter_version();
+    void run_script(const std::string & script_name);
 
 }
 

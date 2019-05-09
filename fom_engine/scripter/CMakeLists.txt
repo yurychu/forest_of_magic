@@ -5,6 +5,9 @@ add_library(
         STATIC
 		include/scripter/scripter.hpp
 		src/scripter.cpp
+
+		include/scripter/ScriptState.hpp
+		src/ScriptState.cpp
 )
 
 set_property(TARGET scripter_lib APPEND PROPERTY CXX_STANDARD 14)
@@ -31,6 +34,16 @@ target_link_libraries(
 
 		PRIVATE
 		${LUA_LIBRARIES}
+)
 
+add_executable(
+        scripter_examples
 
+        src/examples/scripter_examples.cpp
+)
+
+target_link_libraries(
+        scripter_examples
+        PRIVATE
+        scripter_lib
 )
