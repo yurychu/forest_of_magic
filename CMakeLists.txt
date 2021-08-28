@@ -1,9 +1,6 @@
-cmake_minimum_required(VERSION 3.5)
-message(STATUS "inf: CMAKE_VERSION = ${CMAKE_VERSION}")
+cmake_minimum_required(VERSION 3.17)
 
-project(forest_of_magic)
+project(forest_of_magic_proj C)
 
-# add_compile_options(-Wall -Wno-unused-function)
-
-add_subdirectory(fom_engine)
+add_subdirectory(fom)
 add_subdirectory(game)

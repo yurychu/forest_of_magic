@@ -1,11 +1,9 @@
-#include <cstdlib>
-
-#include <fom/fom.hpp>
+extern "C" {
+    #include <fom/fom.h>
+}
 
 
 int main(int argc, char * argv [])
 {
-    fom::print_versions();
-
-    return EXIT_SUCCESS;
+    const char *ver = fom_version();
 }

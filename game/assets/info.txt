@@ -1,1 +1,1 @@
-need load assets from another place
+Unzip assets from asset pack.

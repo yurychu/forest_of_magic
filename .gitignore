@@ -41,8 +41,8 @@ vs17/x64/*
 CMakeSettings.json
 
 # Assets
-game/assets/files/*
-
+game/assets/*
+!game/assets/info.txt
 
 # ext libs
 fom_engine/ext_libs/lua/lua535vc15_64
