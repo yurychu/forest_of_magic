@@ -44,6 +44,11 @@ target_link_libraries(
         PUBLIC
         lua_code_scripts
 )
+target_compile_definitions(
+        lua_code_exe
+        PRIVATE
+        FOM_LUA_SCRIPTS_DIR_NAME="${FOM_LUA_SCRIPTS_DIR_NAME}/"
+)
 
 #include(FOMGetLua)
 #fom_get_lua()
