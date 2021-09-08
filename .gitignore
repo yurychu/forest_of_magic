@@ -33,7 +33,7 @@
 
 # Idea
 .idea
-cmake-build-debug/
+cmake-build-*
 
 # Visual Studio
 .vs
