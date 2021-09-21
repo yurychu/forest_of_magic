@@ -25,27 +25,28 @@ add_custom_command(
         COMMENT "Copy scripts to ${FOM_LUA_SCRIPTS_DIR_NAME}"
         DEPENDS  # add core lua script files here!
         lua_code/scripts/script.lua
+        lua_code/scripts/mymodule.lua
 )
 
 # executable
 add_executable(
-        lua_code_exe
-        lua_code/doscript.c
+        loadmodule
+        lua_code/loadmodule.c
 )
 target_include_directories(
-        lua_code_exe
+        loadmodule
         PUBLIC
         ${LUA_INCLUDE_DIR}
 )
 target_link_libraries(
-        lua_code_exe
+        loadmodule
         PUBLIC
         ${LUA_LIBRARIES}
         PUBLIC
         lua_code_scripts
 )
 target_compile_definitions(
-        lua_code_exe
+        loadmodule
         PRIVATE
         FOM_LUA_SCRIPTS_DIR_NAME="${FOM_LUA_SCRIPTS_DIR_NAME}/"
 )
