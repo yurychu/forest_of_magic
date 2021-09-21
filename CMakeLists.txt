@@ -24,6 +24,11 @@ set(glfw3_ROOT CACHE PATH "Specify glfw3 installed location")
 find_package(glfw3 3.3 REQUIRED)
 # glfw3 build: MinGW (gcc) environment
 
+# Glad
+set(glad_ROOT CACHE PATH "Specify glad installed location")
+find_package(glad 0.1.34 REQUIRED)
+# glad build: MinGW (gcc) environment
+
 # Lua scripts list "custom target"
 set(FOM_LUA_SCRIPTS_DIR_NAME bin_scripts)
 add_library(
@@ -72,10 +77,12 @@ add_executable(
         graphics_exe
         graphics/graphics.c
 )
+
 target_link_libraries(
         graphics_exe
         PRIVATE
         glfw
+        glad::glad
 )
 
 #include(FOMGetLua)
