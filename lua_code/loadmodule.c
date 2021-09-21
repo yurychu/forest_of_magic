@@ -12,6 +12,7 @@
 #elif
 #define FOM_SCRIPT_DIR ""
 #endif
+// todo(y.chu): move to header
 
 int main(int argc, char* argv[])
 {
